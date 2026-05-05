@@ -1,0 +1,11 @@
+Chào các bạn, hôm nay chúng ta học về retrieval augmented generation, thường gọi là RAG, trong bối cảnh ứng dụng giáo dục. Mục tiêu là giúp chatbot trả lời dựa trên tài liệu bài giảng thật của trường, không bịa đặt.
+
+Đầu tiên chúng ta embedding. Embedding là vector số hóa ý nghĩa của câu. Hai câu gần nghĩa sẽ có vector gần nhau trong không gian vector. Thư viện phổ biến là sentence transformers hoặc API embedding của các nhà cung cấp cloud.
+
+Bước hai là vector database. Ta chia tài liệu thành chunk, mỗi chunk một vector, lưu vào kho như Pinecone, Qdrant, hoặc pgvector trong Postgres. Khi user hỏi, ta embed câu hỏi rồi similarity search để lấy top K đoạn liên quan.
+
+Bước ba là prompt engineering. Ta ghép system prompt, context lấy từ vector DB, và câu hỏi user. Quan trọng là yêu cầu model chỉ trả lời khi có bằng chứng trong context; nếu không có thì nói không biết. Điều này giảm hallucination trong môi trường university compliance.
+
+Cuối cùng là evaluation. Ta cần benchmark trên bộ câu hỏi mẫu, đo độ chính xác citation, và có vòng human review cho nội dung nhạy cảm. Trong lớp các bạn sẽ implement một pipeline RAG tối giản với FastAPI làm backend và một UI đơn giản.
+
+Tóm lại: chunk tốt, embedding ổn, retrieval chính xác, và guardrail trong prompt là bốn trụ cột để triển khai AI hỗ trợ học tập an toàn ở Đông Nam Á.

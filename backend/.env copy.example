@@ -1,0 +1,10 @@
+# Sao chép thành backend/.env — KHÔNG commit file .env (chứa API key).
+# Có VALSEA_API_KEY → upload audio gọi ASR thật tại https://api.valsea.ai
+VALSEA_API_KEY=
+# Tùy chọn: chỉ set nếu không dùng host mặc định (phải là URL, không phải API key).
+VALSEA_API_BASE=
+VALSEA_LANGUAGE=vietnamese
+VALSEA_ENABLE_CORRECTION=true
+VALSEA_ENABLE_TAGS=true
+VALSEA_RESPONSE_FORMAT=json
+CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
